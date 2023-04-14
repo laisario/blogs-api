@@ -10,6 +10,10 @@ const UserModel = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
+  User.associate = (models) => {
+    User.hasMany
+  }
+
   return User;
 };
 
