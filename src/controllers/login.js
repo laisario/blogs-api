@@ -1,10 +1,14 @@
-const loginService = require('../services/login')
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET || 'secretPassword';
 
 const login = async (req, res) => { 
-  const { email, password } = req.body;
-  const response = await loginService.login({email, password});
-  console.log(response)
-  res.status(200).json({response});
+  const {user} = res.locals;
+  const jwtConfig = {
+    expiresIn: '7d',
+    algorithm: 'HS256',
+  };
+  const token = jwt.sign({ data: { userId: user.id } }, secret, jwtConfig);
+  res.status(200).json({ token });
 };
 
-module.exports = login;
+module.exports = {login};
