@@ -5,4 +5,16 @@ const findByEmail = (email) => {
   return user;
 };
 
-module.exports = {findByEmail};
+const getAllUsers = () => {
+  const users = User.findAll()
+  return users
+}
+
+
+const createUser = (newUser) => {
+  const {displayName, email, password, image} = newUser;
+  const user = User.create({displayName, email, password, image});
+  return user;
+};
+
+module.exports = {findByEmail, createUser, getAllUsers};
