@@ -7,5 +7,7 @@ const router = express.Router();
 
 router.post('/', validateDisplayName, validateEmail, validatePassword, userController.create);
 router.get('/', validateJWT, userController.getAll);
+router.get('/:id', validateJWT, userController.getByUserId);
+
 
 module.exports = router;

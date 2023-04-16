@@ -5,20 +5,25 @@ const userService = require('../services/user');
 const secret = process.env.JWT_SECRET || 'secretPassword';
 
 const validateJWT = async (req, res, next) => {
-    const token = req.header('Authorization');
+    // const token = req.header('Authorization');
+    const { authorization: token } = req.headers;
     if (!token) {
-      return res.status(401).json({ error: 'Token not found' });
+      return res.status(401).json({ message: 'Token not found' });
     }
-    const decoded = jwt.verify(token, secret);
-    
-    const { userId } = decoded;
-    const user = await userService.findByUserId(userId);
+    try {
+      const decoded = jwt.verify(token, secret);
+      const { userId } = decoded;
+      const user = await userService.findByUserId(userId);
+  
+      if (!user) {
+        return res.status(401).json({ message: 'Expired or invalid token' });
+      }
 
-    if (!user) {
+      req.user = user;
+      next();
+    } catch (e) {
       return res.status(401).json({ message: 'Expired or invalid token' });
     }
-    req.user = user;
-    next();
 };
 
 module.exports = {validateJWT};
