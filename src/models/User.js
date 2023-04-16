@@ -2,6 +2,7 @@ const UserModel = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     id: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
     displayName: DataTypes.STRING,
@@ -16,12 +17,6 @@ const UserModel = (sequelize, DataTypes) => {
   // User.associate = (models) => {
   //   User.hasMany(Models.BlogPosts)
   // }
-
-  // (async () => {
-  //   await sequelize.sync({ force: true });
-  //   // As funções vão aqui
-  // })();
-
 
   return User;
 };
