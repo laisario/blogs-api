@@ -1,6 +1,8 @@
-const { Category } = require('../models');
+const { Category, BlogPost } = require('../models');
 
-const findCategoryById = async (id) => Category.findOne({ where: { id } });
+const findCategoryById = async (id) => {
+  return Category.findOne({ where: { id } });
+};
 
 
 const createCategory = async (newCategory) => Category.create(newCategory);
