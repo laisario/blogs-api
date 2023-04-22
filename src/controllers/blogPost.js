@@ -1,8 +1,8 @@
 const postService = require('../services/BlogPost');
 
 const createPostCategory = async (postId, categoryIds) => {
-  const promises = categoryIds;
-  ''.map((id) => postService.createPostCategory({ postId, categoryId: id }));
+  const promises = categoryIds
+    .map((id) => postService.createPostCategory({ postId, categoryId: id }));
   await Promise.all(promises);
 };
 
