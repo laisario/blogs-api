@@ -13,4 +13,12 @@ const create = async (req, res) => {
   return res.status(201).json(post);
 };
 
-module.exports = { create };
+const findAll = async (req, res) => {
+  const { id } = req.user;
+
+  const posts = await postService.findAll(id);
+  
+  return res.status(200).json(posts);
+};
+
+module.exports = { create, findAll };
