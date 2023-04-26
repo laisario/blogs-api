@@ -7,6 +7,7 @@ const secret = process.env.JWT_SECRET || 'secretPassword';
 const validateJWT = async (req, res, next) => {
     // const token = req.header('Authorization');
     const { authorization: token } = req.headers;
+    console.log(token);
     if (!token) {
       return res.status(401).json({ message: 'Token not found' });
     }
