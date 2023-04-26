@@ -12,7 +12,12 @@ const CategoryModel = (sequelize, DataTypes) => {
   });
 
   Category.associate = (models) => {
-    Category.belongsToMany(models.BlogPost, {through: 'Posts_Categories'})
+    Category.belongsToMany(models.BlogPost, {
+      through: 'Posts_Categories',
+      as: 'postCategories',
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
+    })
   }
 
   return Category;

@@ -14,9 +14,7 @@ const create = async (req, res) => {
 };
 
 const findAll = async (req, res) => {
-  const { id } = req.user;
-
-  const posts = await postService.findAll(id);
+  const posts = await postService.findAll();
   
   return res.status(200).json(posts);
 };
@@ -24,8 +22,21 @@ const findAll = async (req, res) => {
 const findById = async (req, res) => {
   const { id } = req.params;
   const post = await postService.findById(id);
-  if (!post) return res.status(404).json({ message: 'Post does not exist' });
   return res.status(200).json(post);
 }; 
 
-module.exports = { create, findAll, findById };
+const updatedPost = async (req, res) => {
+  const { title, content } = req.body;
+  const { id } = req.params;
+  
+  const post = await postService.findById(id);
+  post.set({
+    title,
+    content,
+    updated: new Date(),
+  });
+  await post.save();
+  return res.status(200).json(post);
+};
+
+module.exports = { create, findAll, findById, updatedPost };
