@@ -1,10 +1,7 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# API de Blog usando Node.js, Express e Sequelize
+Este é um projeto de API para um blog, construído com Node.js, Express e Sequelize. O objetivo deste projeto foi praticar e demonstrar o uso dessas tecnologias, incluindo autenticação JWT e containerização com Docker.
+
+## Funcionalidades
+- CRUD de Postagens: A API permite a criação, leitura, atualização e exclusão de postagens do blog.
+- Autenticação JWT: Implementação de autenticação usando JSON Web Tokens para proteger rotas específicas.
+- Docker: Configuração do projeto para executar dentro de contêineres Docker.
